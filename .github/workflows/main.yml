@@ -1,24 +1,15 @@
-name: Issue Manager
-
 on:
   schedule:
-    - cron: "0 0 * * *"
-  issue_comment:
-    types:
-      - created
-      - edited
-  issues:
-    types:
-      - labeled
+  - cron: "0 0 * * *"
 
 jobs:
   issue-manager:
     runs-on: ubuntu-latest
     steps:
-      - uses: tiangolo/issue-manager@0.2.0
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          config: >
+    - uses: tiangolo/issue-manager@master
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        config: >
             {
               "answered": {
                 "users": ["tiangolo"],
